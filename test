@@ -1,10 +1,4 @@
-# 不是很完备的接口文档
-# 建议使用Notepad++打开
-# 如果有不合理的地方请及时联系
-
-1：用户找回密码
-url：http://wwwmobile03.intranet.corp/external/  		
-action: users/findPasswd			请求action
+http://wwwmobile03.intranet.corp/external/users/findPasswd/
 
 {
   "code": "00001",
