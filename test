@@ -1,0 +1,15 @@
+http://wwwmobile03.intranet.corp/external/users/findPasswd/
+
+{
+  "code": "00001",
+  "msg": "验证码已发送您的本次验证码是：641731, 请在5分钟内验证",
+  "evn": "pro",
+  "time": 1439258918,
+  "data": {
+    "unique": {
+      "id": "3",
+      "mobile": "18451832960",
+      "username": "test1@happypingpang.cn"
+    }
+  }
+}
