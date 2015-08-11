@@ -1,15 +1,23 @@
+# 第一次使用，慢慢完善
 # 不是很完备的接口文档
 # 建议使用Notepad++打开
 # 如果有不合理的地方请及时联系
+# 所有接口只提供action
+# baseUrl：http://wwwmobile03.intranet.corp/external/  
+# 格式说明[param:(type)value]  为可选参数 / type默认string
+# msg中包含[],为测试提示，线上版本将不显示
+#
+#############################################################
+1：用户找回密码	
+action: users/findPasswd/[version:(integer)1]  默认1开始
+params:{
+	username: "zhang",
+	[mobile: ""]				// 在用户自己填写手机号必须传入
+}
 
-1：用户找回密码
-url：http://wwwmobile03.intranet.corp/external/  		
-action: users/findPasswd			请求action
-http://wwwmobile03.intranet.corp/external/users/findPasswd/
-
-{
+result:{
   "code": "00001",
-  "msg": "验证码已发送您的本次验证码是：641731, 请在5分钟内验证",
+  "msg": "验证码已发送[您的本次验证码是：641731, 请在5分钟内验证]",
   "evn": "pro",
   "time": 1439258918,
   "data": {
@@ -20,3 +28,44 @@ http://wwwmobile03.intranet.corp/external/users/findPasswd/
     }
   }
 }
+
+说明：
+data数据unique表示用户输入手机号未被绑定过，成功发送验证码
+		find表示用户输入手机号成功绑定该账号，成功发送验证码
+		many表示用户输入手机绑定其他找好，未匹配该用户，不能发送验证码需用户另外操作
+		
+############################################################	
+2：用户获取验证码
+action: users/sendCaptcha
+params:{
+	mobile: 135***   
+}
+
+result:{
+  "code": "00001",			// 00003手机格式错误
+  "msg": "请注意查收验证码[您的本次验证码是：379219, 请在5分钟内验证]",
+  "evn": "pro",
+  "time": 1439282219,
+  "data": null
+}
+说明：
+
+#############################################################
+
+3：确认修改密码
+action: users/confirmReset
+params:{
+	userId: 123        	// 可以取返回的id
+	captcha: 1353 		// 用户收取到的手机验证码
+	mobile: 163**		// 用户手机
+	newPassword: *****	// 新密码
+}
+
+result:{
+  "code": "00003",			// 00001 成功修改
+  "msg": "验证码错误",
+  "evn": "pro",
+  "time": 1439282124,
+  "data": null
+}
+
