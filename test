@@ -69,3 +69,21 @@ result:{
   "data": null
 }
 
+############################################################
+4：用户修改密码
+action: users/revisePassword
+params:{
+	userId: 123        		// 用户ID
+	oldPassword: **** 		// 用户原始密码
+	newPassword: ****		// 用户新密码
+	secondPassword: *****		// 确认密码
+}
+
+result:{
+  "code": "00001",			// 00003 参数错误  00002 原始密码错误
+  "msg": "密码修改成功，请重新登录",
+  "evn": "pro",
+  "time": 1439282124,
+  "data": null
+}
+
